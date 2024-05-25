@@ -31,7 +31,7 @@ import NotAuthorized from "./components/NotAuth.jsx";
 
 let persistor = persistStore(store);
 // export const server = "https://sevasetu-zpdg.onrender.com";
-export const server = "http://localhost:9000";
+export const server = "https://rentify-challenge.onrender.com";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

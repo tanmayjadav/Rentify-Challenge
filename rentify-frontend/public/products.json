@@ -1,0 +1,244 @@
+[
+    {
+      "place": "Delhi",
+      "area": 1800,
+      "bedrooms": 5,
+      "bathrooms": 4,
+      "nearbyHospitals": 3,
+      "nearbyColleges": 5,
+      "price": 450000,
+      "description": "Luxurious villa in the heart of Delhi.",
+      "image": [
+        "https://images.unsplash.com/photo-1700480556000-b3bfa81728f0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGhvdXNlJTIwaW1hZ2VzJTIwdmVydGljYWx8ZW58MHx8MHx8fDI%3D"
+      ],
+      "likes":0,
+      "sellerId": "6650a02a6e114b8ce341fe99"
+    },
+    {
+      "place": "Bangalore",
+      "area": 1600,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "nearbyHospitals": 2,
+      "nearbyColleges": 4,
+      "price": 300000,
+      "description": "Modern apartment in the tech hub of Bangalore.",
+      "image": [
+        "https://plus.unsplash.com/premium_photo-1678172259360-b3968e99ba99?dpr=1&w=306&auto=format&fit=crop&q=60&crop=entropy&cs=tinysrgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTF8fGhvdXNlJTIwaW1hZ2VzJTIwdmVydGljYWx8ZW58MHwwfHx8MTcxNjYyMTY0MXwx&ixlib=rb-4.0.3"
+      ],
+      "likes":0,
+      "sellerId": "6650a02a6e114b8ce341fe99"
+    },
+    {
+      "place": "Chennai",
+      "area": 1400,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "nearbyHospitals": 3,
+      "nearbyColleges": 3,
+      "price": 280000,
+      "description": "Cozy flat with a view in the serene city of Chennai.",
+      "image": [
+        "https://images.unsplash.com/photo-1600255940000-324ee8804c5d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aG91c2UlMjBpbWFnZXMlMjB2ZXJ0aWNhbHxlbnwwfHwwfHx8Mg%3D%3D"
+      ],
+      "likes":0,
+      "sellerId": "6650a02a6e114b8ce341fe99"
+    },
+    {
+        "place": "Delhi",
+        "area": 1800,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "nearbyHospitals": 3,
+        "nearbyColleges": 5,
+        "price": 450000,
+        "description": "Luxurious villa in the heart of Delhi.",
+        "image": [
+          "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aG91c2V8ZW58MHx8MHx8fDI%3D"
+        ],
+        "likes":0,
+        "sellerId": "6650a02a6e114b8ce341fe99"
+      },
+      {
+        "place": "Bangalore",
+        "area": 1600,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "nearbyHospitals": 2,
+        "nearbyColleges": 4,
+        "price": 300000,
+        "description": "Modern apartment in the tech hub of Bangalore.",
+        "image": [
+          "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8aG91c2V8ZW58MHx8MHx8fDI%3D"
+        ],
+        "likes":0,
+        "sellerId": "6650a02a6e114b8ce341fe99"
+      },
+      {
+        "place": "Chennai",
+        "area": 1400,
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "nearbyHospitals": 3,
+        "nearbyColleges": 3,
+        "price": 280000,
+        "description": "Cozy flat with a view in the serene city of Chennai.",
+        "image": [
+          "https://unsplash.com/photos/white-and-grey-concrete-building-near-swimming-pool-under-clear-sky-during-daytime-2d4lAQAlbDA"
+        ],
+        "likes":0,
+        "sellerId": "6650a02a6e114b8ce341fe99"
+      },
+      {
+        "place": "Mumbai",
+        "area": 2000,
+        "bedrooms": 4,
+        "bathrooms": 3,
+        "nearbyHospitals": 4,
+        "nearbyColleges": 4,
+        "price": 500000,
+        "description": "Spacious apartment with a sea view in Mumbai.",
+        "image": [
+          "https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGhvdXNlfGVufDB8fDB8fHwy"
+        ],
+        "likes":0,
+        "sellerId": "6650a02a6e114b8ce341fe99"
+      },
+      {
+        "place": "Kolkata",
+        "area": 1200,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "nearbyHospitals": 2,
+        "nearbyColleges": 3,
+        "price": 280000,
+        "description": "Cosy flat in the cultural capital of India.",
+        "image": [
+          "https://images.unsplash.com/photo-1575517111478-7f6afd0973db?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGhvdXNlfGVufDB8fDB8fHwy"
+        ],
+        "likes":0,
+        "sellerId": "6650a02a6e114b8ce341fe99"
+      },
+      {
+        "place": "Hyderabad",
+        "area": 1500,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "nearbyHospitals": 3,
+        "nearbyColleges": 3,
+        "price": 320000,
+        "description": "Modern apartment in the pearl city of Hyderabad.",
+        "image": [
+          "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGhvdXNlfGVufDB8fDB8fHwy"
+        ],
+        "likes":0,
+        "sellerId": "6650a02a6e114b8ce341fe99"
+      },
+      {
+        "place": "Pune",
+        "area": 1400,
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "nearbyHospitals": 3,
+        "nearbyColleges": 4,
+        "price": 270000,
+        "description": "Compact flat in the cultural city of Pune.",
+        "image": [
+          "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGhvdXNlfGVufDB8fDB8fHwy"
+        ],
+        "likes":0,
+        "sellerId": "6650a02a6e114b8ce341fe99"
+      },
+      {
+        "place": "Ahmedabad",
+        "area": 1300,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "nearbyHospitals": 2,
+        "nearbyColleges": 3,
+        "price": 250000,
+        "description": "Comfortable flat in the vibrant city of Ahmedabad.",
+        "image": [
+          "https://example.com/image1.jpg",
+          "https://example.com/image2.jpg"
+        ],
+        "likes":0,
+        "sellerId": "6650a02a6e114b8ce341fe99"
+      },
+      {
+        "place": "Jaipur",
+        "area": 1600,
+        "bedrooms": 4,
+        "bathrooms": 3,
+        "nearbyHospitals": 3,
+        "nearbyColleges": 3,
+        "price": 350000,
+        "description": "Spacious villa in the Pink City of Jaipur.",
+        "image": [
+          "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGhvdXNlfGVufDB8fDB8fHwy"
+        ],
+        "likes":0,
+        "sellerId": "6650a02a6e114b8ce341fe99"
+      },
+      {
+        "place": "Surat",
+        "area": 1400,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "nearbyHospitals": 2,
+        "nearbyColleges": 3,
+        "price": 270000,
+        "description": "Cozy apartment in the diamond city of Surat.",
+        "image": [
+          "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aG91c2V8ZW58MHx8MHx8fDI%3D"
+        ],
+        "likes":0,
+        "sellerId": "6650a02a6e114b8ce341fe99"
+      },
+      {
+        "place": "Lucknow",
+        "area": 1200,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "nearbyHospitals": 2,
+        "nearbyColleges": 3,
+        "price": 200000,
+        "description": "Compact flat in the historical city of Lucknow.",
+        "image": [
+          "https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aG91c2V8ZW58MHx8MHx8fDI%3D"
+        ],
+        "likes":0,
+        "sellerId": "6650a02a6e114b8ce341fe99"
+      },
+      {
+        "place": "Indore",
+        "area": 1300,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "nearbyHospitals": 3,
+        "nearbyColleges": 4,
+        "price": 260000,
+        "description": "Comfortable apartment in the clean city of Indore.",
+        "image": [
+          "https://images.unsplash.com/photo-1604014237800-1c9102c219da?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aG91c2UlMjBpbnRlcmlvcnxlbnwwfHwwfHx8Mg%3D%3D"
+        ],
+        "likes":0,
+        "sellerId": "6650a02a6e114b8ce341fe99"
+      },
+      {
+        "place": "Kochi",
+        "area": 1500,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "nearbyHospitals": 4,
+        "nearbyColleges": 3,
+        "price": 280000,
+        "description": "Comfortable apartment in the scenic city of Kochi.",
+        "image": [
+          "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8aG91c2UlMjBpbnRlcmlvcnxlbnwwfHwwfHx8Mg%3D%3D"
+        ],
+        "likes":0,
+        "sellerId": "6650a02a6e114b8ce341fe99"
+      }
+  ]
+  

@@ -12,6 +12,7 @@ import { Button } from '../ui/button';
 import { server } from '@/main';
 import { useDispatch } from 'react-redux';
 import { setUserLocalStorage } from '../redux/slice/userSlice';
+import { ModeToggle } from '../ModeToggle';
 
 // Zod schema
 const zodSchema = z.object({
@@ -203,7 +204,7 @@ const Register = () => {
               </div>
 
               <Button
-                className="md:text-lg w-full p-6 mt-6 bg-primary dark:text-white"
+                className="md:text-lg w-full p-6 mt-6 bg-primary dark:text-black"
               >
                 Register
               </Button>

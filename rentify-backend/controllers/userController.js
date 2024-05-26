@@ -30,7 +30,7 @@ export const registerUser = async (req, res, next) => {
     sendCookies(user, res, "Register Success", 201);
   } catch (error) {
     console.log(error);
-    next(ErrorHandler);
+    // next(ErrorHandler);
   }
 };
 

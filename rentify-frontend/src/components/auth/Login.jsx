@@ -160,7 +160,7 @@ const Login = () => {
                   </Link>
                 </div>
 
-                <Button className="md:text-lg w-full p-6 mt-6 bg-primary dark:text-white">
+                <Button className="md:text-lg w-full p-6 mt-6 bg-primary dark:text-black">
                   Log In
                 </Button>
               </form>

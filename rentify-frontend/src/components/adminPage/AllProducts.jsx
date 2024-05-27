@@ -21,6 +21,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { SkeletonCard } from "@/components/ui/skeleton"; 
+import { Toaster, toast } from "sonner";
 
 const AllProducts = () => {
   const [properties, setProperties] = useState([]);
@@ -86,8 +87,8 @@ const AllProducts = () => {
       setProperties(
         properties.filter((property) => property.id !== propertyId)
       );
-      toast.success("Property deleted successfully");
-        setChange(change+1)
+      // toast.success("Property deleted successfully");
+      setChange(change+1)
     } catch (error) {
       console.error("Error deleting property:", error);
       toast.error("Failed to delete property");
@@ -201,8 +202,8 @@ const AllProducts = () => {
         </PaginationContent>
       </Pagination>
     </div>
-          </>)}
-   
+    </>)}
+   <Toaster position="Bottom Left"/>
   </div>
 </div>
 );

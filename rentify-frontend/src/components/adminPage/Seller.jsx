@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '../Header/Header'
 import { Outlet } from 'react-router-dom'
 import SideBar from './SideBar'
+import { Toaster } from 'sonner'
 
 const Seller = () => {
   return (
@@ -19,6 +20,7 @@ const Seller = () => {
           <Outlet />
         </main>
       </div>
+      <Toaster position='Bottom Left' />
     </div>
     </>
   )

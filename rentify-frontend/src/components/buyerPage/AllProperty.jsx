@@ -17,15 +17,21 @@ import {
 import axios from "axios";
 import { server } from "@/main";
 import { Toaster, toast } from "sonner";
+import { Slider } from "../ui/slider";
 
 const AllProperty = ({ properties, text }) => {
   // const dispatch = useDispatch();
+  // console.log(properties[0])
   const [searchKey, setSearchKey] = useState("");
   const [sortBy, setSortBy] = useState("");
   const [placeFil, setPlaceFil] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [likedPosts, setLikedPosts] = useState([]);
+  const [collegeRange, setCollegeRange] = useState([0, 10]);
+  const [hospitalRange, setHospitalRange] = useState([0, 10]);
   const propertiesPerPage = 4;
+  const [minArea, setMinArea] = useState(200);
+  const [maxArea, setMaxArea] = useState(20000);
   const [updatedProperties, setUpdatedProperties] = useState(
     properties.map((property) => ({ ...property, likes: 0 }))
   );
@@ -36,15 +42,13 @@ const AllProperty = ({ properties, text }) => {
         toast("You have already liked this post.");
         return;
       }
-      // Make the API call to like the post
+
       const response = await axios.put(
         `${server}/api/property/like/${propertyId}`
       );
       if (response.data.success) {
-        // Update the local state to mark the post as liked
         setLikedPosts((prevLikedPosts) => [...prevLikedPosts, propertyId]);
 
-        // Update the likes count for the property
         setUpdatedProperties((prevProperties) =>
           prevProperties.map((property) =>
             property._id === propertyId
@@ -53,7 +57,6 @@ const AllProperty = ({ properties, text }) => {
           )
         );
 
-        // Update the SearchedProperties state
         setSearchedProperties((prevProperties) =>
           prevProperties.map((property) =>
             property._id === propertyId
@@ -80,9 +83,21 @@ const AllProperty = ({ properties, text }) => {
     }
   };
 
-  const filterProperties = (properties, placeFil) => {
-    if (!placeFil) return properties;
-    return properties.filter((property) => property.place === placeFil);
+  const filterProperties = (properties, placeFil,collegeRange,hospitalRange,minArea,maxArea) => {
+    let filteredProperties = properties;
+    if (placeFil) {
+      filteredProperties = filteredProperties.filter((property) => property.place === placeFil);
+    }
+    filteredProperties = filteredProperties.filter(
+      (property) => property.nearbyHospitals >= hospitalRange[0] && property.nearbyHospitals <= hospitalRange[1]
+    );
+    filteredProperties = filteredProperties.filter(
+      (property) => property.nearbyColleges >= collegeRange[0] && property.nearbyColleges <= collegeRange[1]
+    );
+    filteredProperties = filteredProperties.filter(
+      (property) => property.area >= minArea && property.area <= maxArea
+    );
+    return filteredProperties;
   };
 
   const searchProperties = (properties, searchKey) => {
@@ -106,13 +121,34 @@ const AllProperty = ({ properties, text }) => {
     setSearchKey(e.target.value);
   };
 
+  const handleCollegeRangeChange = (value) => {
+    setCollegeRange(value);
+  };
+  const handleHospitalRangeChange = (value) => {
+    setHospitalRange(value);
+  };
+  
+  const handleMinAreaChange = (e) => {
+    setMinArea(e.target.value);
+  };
+
+  const handleMaxAreaChange = (e) => {
+    setMaxArea(e.target.value);
+  };
+
+  // const applyAreaFilter = () => {
+  //   const filtered = filterProperties(properties, placeFil, collegeRange, hospitalRange,minArea,maxArea);
+  //   const searched = searchProperties(filtered, searchKey);
+  //   setSearchedProperties(sortProperties(searched, sortBy));
+  //   setCurrentPage(1);
+  // };
+
   useEffect(() => {
-    const filtered = filterProperties(properties, placeFil);
+    const filtered = filterProperties(properties, placeFil, collegeRange, hospitalRange,minArea,maxArea);
     const searched = searchProperties(filtered, searchKey);
     setSearchedProperties(sortProperties(searched, sortBy));
     setCurrentPage(1);
-    // setUpdatedProperties();
-  }, [properties, searchKey, sortBy, placeFil]);
+  }, [properties, searchKey, sortBy, placeFil,collegeRange,hospitalRange,collegeRange,minArea,maxArea]);
 
   const [SearchedProperties, setSearchedProperties] = useState(properties);
 
@@ -129,8 +165,8 @@ const AllProperty = ({ properties, text }) => {
   return (
     <>
       <div className="bg-background py-10 sm:py-0">
-        <div className="max-w-2xl mx-auto px-4 sm:py-8 sm:pt-24 sm:px-6 lg:max-w-7xl lg:px-8">
-          <div className="pt-6 sm:pt-0  flex justify-between flex-col sm:flex-row items-center">
+        <div className=" mx-auto px-4 sm:py-8 sm:pt-24 sm:px-6 lg:px-8">
+          <div className="pt-6 sm:pt-0 flex justify-between flex-col md:flex-row items-center">
             <h2 className="text-xl font-bold hidden md:block">{text}</h2>
             <Input
               value={searchKey}
@@ -140,7 +176,7 @@ const AllProperty = ({ properties, text }) => {
             />
           </div>
 
-          <div className="flex gap-5 flex-col pb-6 sm:pb-0 sm:flex-row justify-between items-center mt-4">
+          <div className="flex gap-5 flex-col pb-6 sm:pb-0 md:flex-row justify-between items-center mt-4">
             <div className="flex items-center justify-end">
               <label htmlFor="sortBy" className="mr-2">
                 Sort by:
@@ -176,7 +212,68 @@ const AllProperty = ({ properties, text }) => {
                 ))}
               </select>
             </div>
+            {/* <div> */}
+            <div className="flex items-center justify-end">
+              <label htmlFor="collegeRange" className="mr-2">
+                Nearby College
+              </label>
+              <Slider
+                range
+                min={0}
+                max={10}
+                step={1}
+                className="w-[100px] md:w-[10vw]"
+                defaultValue={[0, 10]}
+                value={collegeRange}
+                onValueChange={handleCollegeRangeChange}
+              />
+            </div>
+            <div className="flex items-center justify-end">
+              <label htmlFor="hospitalRange" className="mr-2">
+                Hospital College
+              </label>
+              <Slider
+                range
+                min={0}
+                max={10}
+                step={1}
+                className="w-[100px] md:w-[10vw]"
+                defaultValue={[0, 10]}
+                value={hospitalRange}
+                onValueChange={handleHospitalRangeChange}
+              />
+            </div>
           </div>
+          <div className="flex gap-5 flex-col pb-6 sm:pb-0 md:flex-row justify-between items-center mt-4">
+            <div className="flex items-center justify-end">
+              <label htmlFor="minArea" className="mr-2">
+                Min Area
+              </label>
+              <Input
+                type="number"
+                id="minArea"
+                value={minArea}
+                onChange={handleMinAreaChange}
+                className="py-1 text-sm border rounded-md "
+              />
+            </div>
+            <div className="flex items-center justify-end">
+              <label htmlFor="maxArea" className="mr-2">
+                Max Area
+              </label>
+              <Input
+                type="number"
+                id="maxArea"
+                value={maxArea}
+                onChange={handleMaxAreaChange}
+                className="py-1 text-sm border rounded-md "
+              />
+            </div>
+            {/* <Button onClick={applyAreaFilter} className="p-2 bg-background text-foreground hover:bg-red-400">
+              Apply Area Filter
+            </Button> */}
+          </div>
+
         </div>
         <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
           {paginatedProperties.length === 0 ? (

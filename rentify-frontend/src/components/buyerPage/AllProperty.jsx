@@ -1,6 +1,12 @@
 import { useDispatch } from "react-redux";
 import { Button } from "../ui/button";
-// import { addToCart } from "@/slice/cartSlice";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 import { Link } from "react-router-dom";
 import { Input } from "../ui/input";
 import { useState, useEffect } from "react";
@@ -20,8 +26,6 @@ import { Toaster, toast } from "sonner";
 import { Slider } from "../ui/slider";
 
 const AllProperty = ({ properties, text }) => {
-  // const dispatch = useDispatch();
-  // console.log(properties[0])
   const [searchKey, setSearchKey] = useState("");
   const [sortBy, setSortBy] = useState("");
   const [placeFil, setPlaceFil] = useState("");
@@ -29,9 +33,9 @@ const AllProperty = ({ properties, text }) => {
   const [likedPosts, setLikedPosts] = useState([]);
   const [collegeRange, setCollegeRange] = useState([0, 10]);
   const [hospitalRange, setHospitalRange] = useState([0, 10]);
-  const propertiesPerPage = 4;
+  const propertiesPerPage = 8;
   const [minArea, setMinArea] = useState(200);
-  const [maxArea, setMaxArea] = useState(20000);
+  const [maxArea, setMaxArea] = useState(5000);
   const [updatedProperties, setUpdatedProperties] = useState(
     properties.map((property) => ({ ...property, likes: 0 }))
   );
@@ -83,16 +87,29 @@ const AllProperty = ({ properties, text }) => {
     }
   };
 
-  const filterProperties = (properties, placeFil,collegeRange,hospitalRange,minArea,maxArea) => {
+  const filterProperties = (
+    properties,
+    placeFil,
+    collegeRange,
+    hospitalRange,
+    minArea,
+    maxArea
+  ) => {
     let filteredProperties = properties;
     if (placeFil) {
-      filteredProperties = filteredProperties.filter((property) => property.place === placeFil);
+      filteredProperties = filteredProperties.filter(
+        (property) => property.place === placeFil
+      );
     }
     filteredProperties = filteredProperties.filter(
-      (property) => property.nearbyHospitals >= hospitalRange[0] && property.nearbyHospitals <= hospitalRange[1]
+      (property) =>
+        property.nearbyHospitals >= hospitalRange[0] &&
+        property.nearbyHospitals <= hospitalRange[1]
     );
     filteredProperties = filteredProperties.filter(
-      (property) => property.nearbyColleges >= collegeRange[0] && property.nearbyColleges <= collegeRange[1]
+      (property) =>
+        property.nearbyColleges >= collegeRange[0] &&
+        property.nearbyColleges <= collegeRange[1]
     );
     filteredProperties = filteredProperties.filter(
       (property) => property.area >= minArea && property.area <= maxArea
@@ -127,7 +144,7 @@ const AllProperty = ({ properties, text }) => {
   const handleHospitalRangeChange = (value) => {
     setHospitalRange(value);
   };
-  
+
   const handleMinAreaChange = (e) => {
     setMinArea(e.target.value);
   };
@@ -144,11 +161,28 @@ const AllProperty = ({ properties, text }) => {
   // };
 
   useEffect(() => {
-    const filtered = filterProperties(properties, placeFil, collegeRange, hospitalRange,minArea,maxArea);
+    const filtered = filterProperties(
+      properties,
+      placeFil,
+      collegeRange,
+      hospitalRange,
+      minArea,
+      maxArea
+    );
     const searched = searchProperties(filtered, searchKey);
     setSearchedProperties(sortProperties(searched, sortBy));
     setCurrentPage(1);
-  }, [properties, searchKey, sortBy, placeFil,collegeRange,hospitalRange,collegeRange,minArea,maxArea]);
+  }, [
+    properties,
+    searchKey,
+    sortBy,
+    placeFil,
+    collegeRange,
+    hospitalRange,
+    collegeRange,
+    minArea,
+    maxArea,
+  ]);
 
   const [SearchedProperties, setSearchedProperties] = useState(properties);
 
@@ -165,116 +199,124 @@ const AllProperty = ({ properties, text }) => {
   return (
     <>
       <div className="bg-background py-10 sm:py-0">
-        <div className=" mx-auto px-4 sm:py-8 sm:pt-24 sm:px-6 lg:px-8">
-          <div className="pt-6 sm:pt-0 flex justify-between flex-col md:flex-row items-center">
-            <h2 className="text-xl font-bold hidden md:block">{text}</h2>
-            <Input
-              value={searchKey}
-              placeholder="Search Here..."
-              onChange={handleSearchChange}
-              className="w-1/2"
-            />
-          </div>
+        <div className=" mx-auto pb-4 pt-20 ">
+        <Accordion type="single" collapsible className="bg-gray/10 dark:bg-background/80 border px-5 rounded-md">
+          <AccordionItem value="item-1">
+            <AccordionTrigger className="flex justify-center text-xl items-center"><div>Apply Search and Filter Here</div></AccordionTrigger>
+            <AccordionContent>
+                <div className="pt-6 sm:pt-0 flex justify-between flex-col md:flex-row items-center">
+                  <h2 className="text-xl font-bold hidden md:block">Totol Properties {SearchedProperties.length}</h2>
+                  <Input
+                    value={searchKey}
+                    placeholder="Search Here..."
+                    onChange={handleSearchChange}
+                    className="w-1/2"
+                  />
+                </div>
 
-          <div className="flex gap-5 flex-col pb-6 sm:pb-0 md:flex-row justify-between items-center mt-4">
-            <div className="flex items-center justify-end">
-              <label htmlFor="sortBy" className="mr-2">
-                Sort by:
-              </label>
-              <select
-                id="sortBy"
-                className="py-1 text-sm border rounded-md dark:text-background"
-                value={sortBy}
-                onChange={handleSortChange}
-              >
-                <option value="">Select</option>
-                <option value="lowToHigh">Price: Low to High</option>
-                <option value="highToLow">Price: High to Low</option>
-              </select>
-            </div>
-            <div className="flex items-center justify-end">
-              <label htmlFor="placeFilter" className="mr-2">
-                Place
-              </label>
-              <select
-                id="placeFilter"
-                className="py-1 text-sm border rounded-md dark:text-background"
-                value={placeFil}
-                onChange={handlePlaceFilterChange}
-              >
-                <option value="">All</option>
-                {Array.from(
-                  new Set(properties.map((property) => property.place))
-                ).map((place) => (
-                  <option key={place} value={place}>
-                    {place}
-                  </option>
-                ))}
-              </select>
-            </div>
-            {/* <div> */}
-            <div className="flex items-center justify-end">
-              <label htmlFor="collegeRange" className="mr-2">
-                Nearby College
-              </label>
-              <Slider
-                range
-                min={0}
-                max={10}
-                step={1}
-                className="w-[100px] md:w-[10vw]"
-                defaultValue={[0, 10]}
-                value={collegeRange}
-                onValueChange={handleCollegeRangeChange}
-              />
-            </div>
-            <div className="flex items-center justify-end">
-              <label htmlFor="hospitalRange" className="mr-2">
-                Hospital College
-              </label>
-              <Slider
-                range
-                min={0}
-                max={10}
-                step={1}
-                className="w-[100px] md:w-[10vw]"
-                defaultValue={[0, 10]}
-                value={hospitalRange}
-                onValueChange={handleHospitalRangeChange}
-              />
-            </div>
-          </div>
-          <div className="flex gap-5 flex-col pb-6 sm:pb-0 md:flex-row justify-between items-center mt-4">
-            <div className="flex items-center justify-end">
-              <label htmlFor="minArea" className="mr-2">
-                Min Area
-              </label>
-              <Input
-                type="number"
-                id="minArea"
-                value={minArea}
-                onChange={handleMinAreaChange}
-                className="py-1 text-sm border rounded-md "
-              />
-            </div>
-            <div className="flex items-center justify-end">
-              <label htmlFor="maxArea" className="mr-2">
-                Max Area
-              </label>
-              <Input
-                type="number"
-                id="maxArea"
-                value={maxArea}
-                onChange={handleMaxAreaChange}
-                className="py-1 text-sm border rounded-md "
-              />
-            </div>
-            {/* <Button onClick={applyAreaFilter} className="p-2 bg-background text-foreground hover:bg-red-400">
+                <div className="flex gap-5 flex-col pb-6 sm:pb-0 md:flex-row justify-between items-center mt-4">
+                  <div className="flex items-center justify-end">
+                    <label htmlFor="sortBy" className="mr-2">
+                      Sort by:
+                    </label>
+                    <select
+                      id="sortBy"
+                      className="py-1 text-sm border rounded-md dark:text-background"
+                      value={sortBy}
+                      onChange={handleSortChange}
+                    >
+                      <option value="">Select</option>
+                      <option value="lowToHigh">Price: Low to High</option>
+                      <option value="highToLow">Price: High to Low</option>
+                    </select>
+                  </div>
+                  <div className="flex items-center justify-end">
+                    <label htmlFor="placeFilter" className="mr-2">
+                      Place
+                    </label>
+                    <select
+                      id="placeFilter"
+                      className="py-1 text-sm border rounded-md dark:text-background"
+                      value={placeFil}
+                      onChange={handlePlaceFilterChange}
+                    >
+                      <option value="">All</option>
+                      {Array.from(
+                        new Set(properties.map((property) => property.place))
+                      ).map((place) => (
+                        <option key={place} value={place}>
+                          {place}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  {/* <div> */}
+                  <div className="flex items-center justify-end">
+                    <label htmlFor="collegeRange" className="mr-2">
+                      Nearby College <span className="p-1 border rounded-sm">{collegeRange[0]}</span>
+                    </label>
+                    <Slider
+                      range
+                      min={0}
+                      max={10}
+                      step={1}
+                      className="w-[100px] md:w-[10vw]"
+                      defaultValue={[0, 10]}
+                      value={collegeRange}
+                      onValueChange={handleCollegeRangeChange}
+                    />
+                  </div>
+                  <div className="flex items-center justify-end">
+                    <label htmlFor="hospitalRange" className="mr-2">
+                      Hospital College <span className="p-1 border rounded-sm">{hospitalRange[0]}</span>
+                    </label>
+                    <Slider
+                      range
+                      min={0}
+                      max={10}
+                      step={1}
+                      className="w-[100px] md:w-[10vw]"
+                      defaultValue={[0, 10]}
+                      value={hospitalRange}
+                      onValueChange={handleHospitalRangeChange}
+                    />
+                  </div>
+                </div>
+                <div className="flex gap-5 flex-col pb-6 sm:pb-0 md:flex-row justify-between items-center mt-4">
+                  <div className="flex items-center justify-end">
+                    <label htmlFor="minArea" className="mr-2">
+                      Min Area
+                    </label>
+                    <Input
+                      type="number"
+                      id="minArea"
+                      value={minArea}
+                      onChange={handleMinAreaChange}
+                      className="py-1 text-sm border rounded-md "
+                    />
+                  </div>
+                  <div className="flex items-center justify-end">
+                    <label htmlFor="maxArea" className="mr-2">
+                      Max Area
+                    </label>
+                    <Input
+                      type="number"
+                      id="maxArea"
+                      value={maxArea}
+                      onChange={handleMaxAreaChange}
+                      className="py-1 text-sm border rounded-md "
+                    />
+                  </div>
+                  {/* <Button onClick={applyAreaFilter} className="p-2 bg-background text-foreground hover:bg-red-400">
               Apply Area Filter
             </Button> */}
-          </div>
-
+                </div>
+              {/* </div> */}
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
         </div>
+
         <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
           {paginatedProperties.length === 0 ? (
             <p>No properties found.</p>
@@ -363,7 +405,7 @@ const AllProperty = ({ properties, text }) => {
             </PaginationContent>
           </Pagination>
         </div>
-      <Toaster position="bottom-left"/>
+        <Toaster position="bottom-left" />
       </div>
     </>
   );

@@ -49,7 +49,7 @@ const Explore = () => {
         {properties && (
           <>
             {" "}
-            {console.log(properties[0])}
+            {/* {console.log(properties[0])} */}
             <AllProperty properties={properties} text="All Properties" />
           </>
         )}

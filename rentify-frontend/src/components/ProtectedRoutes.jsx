@@ -6,7 +6,7 @@ const ProtectedRoute = ({userTypeRequired}) => {
   console.log(userType)
   console.log(userTypeRequired)
   if (userType != userTypeRequired) {
-    return <Navigate to="/not-authorized" />;
+    return <Navigate to="/not-authorized" state={{ userTypeRequired }}/>;
   }
 
   return <Outlet />;

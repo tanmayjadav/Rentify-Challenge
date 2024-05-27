@@ -27,7 +27,7 @@ import AllProducts from "./components/adminPage/AllProducts.jsx";
 import EditProperty from "./components/adminPage/EditProduct.jsx";
 import Explore from "./components/buyerPage/Explore.jsx";
 import ProductPage from "./components/buyerPage/ProductPage.jsx";
-import NotAuthorized from "./components/NotAuth.jsx";
+import { NotAuthorized} from "./components/NotAuth.jsx";
 
 let persistor = persistStore(store);
 // export const server = "https://sevasetu-zpdg.onrender.com";

@@ -165,7 +165,7 @@ const AddProperty = () => {
                   <FormLabel>Place</FormLabel>
                   <FormControl>
                     <Select
-                      className="basic-single"
+                      className="basic-single dark:text-black"
                       classNamePrefix="select"
                       isSearchable={true}
                       name="color"

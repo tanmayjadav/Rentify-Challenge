@@ -62,7 +62,7 @@ const Header = () => {
   };
   return (
     <>
-      <header className=" top-0 fixed z-50 shadow-[0_17px_17px_-25px_rgba(0,0,0,0.3)] dark:shadow-[0_17px_17px_-25px_rgba(255,255,255,0.4)] w-screen pl-3 md:pl-8 pr-3 md:pr-8 flex justify-between items-center">
+      <header className=" top-0 bg-background fixed z-50 shadow-[0_17px_17px_-25px_rgba(0,0,0,0.3)] dark:shadow-[0_17px_17px_-25px_rgba(255,255,255,0.4)] w-screen pl-3 md:pl-8 pr-3 md:pr-8 flex justify-between items-center">
         <div className="text-lg font-bold flex justify-center items-center">
           <Link to="/" className=" dark:bg-white">
             <img

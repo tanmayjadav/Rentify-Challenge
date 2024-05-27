@@ -194,7 +194,7 @@ const AllProperty = ({ properties, text }) => {
                       />
                     </div>
                     <div className="relative mt-4">
-                      <h3 className="text-sm font-medium text-gray-900 truncate">
+                      <h3 className="text-sm font-medium truncate">
                         {property.place}
                       </h3>
                       <p className="mt-1 text-sm text-gray-500">

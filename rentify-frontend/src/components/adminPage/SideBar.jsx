@@ -31,15 +31,14 @@ const SideBar = () => {
 
   return isTabletView ? (
     <>
-      <div className="z-10 relative  pt-16 md:pt-24 pl-10">
-        {/* <Button> */}
-          {/* <Menu color="gray" /> */}
-        {/* </Button> */}
-        <Menubar>
-          <MenubarMenu>
-            <MenubarTrigger>
-              <Menu color="gray" />
+      <div className="z-10 w-screen pt-12 md:pt-16 pl-6 md:pl-10 pb-2">
+        <Menubar className="w-[150px] flex justify-center">
+          <MenubarMenu className=" bg-red-500">
+              <div className="">
+            <MenubarTrigger className="flex flex-row gap-2">
+              <Menu color="gray"/> <span>Menu</span>
             </MenubarTrigger>
+              </div>
             <MenubarContent>
               <MenubarItem>
               <span className="group flex items-center rounded-sm bg-foreground/90 text-background px-3 py-2 text-md font-medium hover:bg-accent hover:text-accent-foreground">

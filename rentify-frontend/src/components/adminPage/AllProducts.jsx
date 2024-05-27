@@ -22,12 +22,13 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { SkeletonCard } from "@/components/ui/skeleton"; 
 
-const AllProducts = ({ sellerId }) => {
+const AllProducts = () => {
   const [properties, setProperties] = useState([]);
   const [change, setChange] = useState(0);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [propertiesPerPage, setPropertiesPerPage] = useState(7);
+  const sellerId = localStorage.getItem('userId');
   useEffect(() => {
     const fetchProperties = async () => {
       try {
@@ -37,13 +38,6 @@ const AllProducts = ({ sellerId }) => {
           if (res.data.success) {
             setProperties(res.data.properties);
           }
-        } else {
-          const res = await axios.get(`${server}/api/properties`);
-          console.log(res);
-          if (res.data.success) {
-            setProperties(res.data.properties);
-          }
-        
         }
       } catch (error) {
         console.error("Error fetching properties:", error);
@@ -53,6 +47,7 @@ const AllProducts = ({ sellerId }) => {
     };
     fetchProperties();
   }, [change]);
+
   const totalPages = Math.ceil(properties.length / propertiesPerPage);
   const paginatedProperties = properties.slice(
     (currentPage - 1) * propertiesPerPage,
@@ -88,7 +83,6 @@ const AllProducts = ({ sellerId }) => {
     console.log(propertyId);
     try {
       await axios.delete(`${server}/api/properties/${propertyId}`);
-
       setProperties(
         properties.filter((property) => property.id !== propertyId)
       );
@@ -110,11 +104,16 @@ const AllProducts = ({ sellerId }) => {
   }
   return (
   <div className="bg-background">
-  <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-    <h2 className="text-xl font-bold text-foreground">Our Properties</h2>
-
-    <div className="mt-8 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
-      {paginatedProperties &&
+  <div className="max-w-2xl mx-auto py-16 px-4 sm:py-16 sm:px-6 lg:max-w-7xl lg:px-8">
+    <h2 className="text-3xl font-bold text-foreground">Our Properties</h2>
+    {properties.length === 0 ? (
+          <div className="mt-8 text-2xl text-center text-gray-500">
+            No properties found. Please add properties first.
+          </div>
+        ) : (
+          <>
+           <div className="mt-8 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
+      {paginatedProperties ?
         paginatedProperties.map((property) => (
           <div key={property.id}>
             <div className="relative">
@@ -164,7 +163,7 @@ const AllProducts = ({ sellerId }) => {
               </div>
             </div>
           </div>
-        ))}
+        )):(<>No Properties Found Please Add properties first</>)}
       <div className="relative">
         <Link to="/seller/addProducts">
           <div className="relative w-full h-96 rounded-lg overflow-hidden border flex justify-center items-center">
@@ -202,6 +201,8 @@ const AllProducts = ({ sellerId }) => {
         </PaginationContent>
       </Pagination>
     </div>
+          </>)}
+   
   </div>
 </div>
 );

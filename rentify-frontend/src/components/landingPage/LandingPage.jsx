@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import LZString from "lz-string";
+import { ModeToggle } from '../ModeToggle';
 
 const LandingPage = () => {
   const [properties, setProperties] = useState([]);
@@ -34,6 +35,7 @@ const LandingPage = () => {
       <div>
           {/* Hero card */}
           <div className="relative">
+
             <div className="absolute inset-x-0 bottom-0 h-1/2 bg-background" />
             <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
               <div className="relative shadow-xl sm:rounded-2xl sm:overflow-hidden">

@@ -24,6 +24,7 @@ const Header = () => {
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
   const [isTabletView, setIsTabletView] = useState(false);
+  const userType = localStorage.getItem('userType');
 
   useEffect(() => {
     const handleResize = () => {
@@ -156,6 +157,17 @@ const Header = () => {
                       </>
                     ) : (
                       <>
+                        {userType=="seller" && (<>
+                        <MenubarItem>
+                          <Link
+                    to="/seller/allproducts"
+                    className="bg-primary text-background font-bold py-2 px-4 rounded"
+                  >
+                    Seller Section
+                  </Link>
+                        </MenubarItem>
+                        <MenubarSeparator />
+                      </>)}
                         <MenubarItem>
                           <button
                             className="bg-primary text-background font-bold py-2 px-4 rounded"
@@ -188,12 +200,23 @@ const Header = () => {
                   </Link>
                 </>
               ) : (
+                <>
+                
+                {userType=="seller" && (<>
+                  <Link
+            to="/seller/allproducts"
+            className="bg-primary text-background font-bold py-2 px-4 rounded"
+          >
+            Seller Section
+          </Link>
+              </>)}
                 <button
                   className="bg-primary text-background font-bold py-2 px-4 rounded"
                   onClick={handleLogout}
                 >
                   Logout
                 </button>
+                </>
               )}
             </>
           )}

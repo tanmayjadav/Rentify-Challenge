@@ -6,29 +6,29 @@ import LZString from "lz-string";
 import { ModeToggle } from '../ModeToggle';
 
 const LandingPage = () => {
-  const [properties, setProperties] = useState([]);
+  // const [properties, setProperties] = useState([]);
 
-  useEffect(() => {
-    const fetchProperties = async () => {
-      try {
-        const storedProperties = localStorage.getItem("properties");
-        if (storedProperties) {
-          const decompressedProperties = LZString.decompress(storedProperties);
-          setProperties(JSON.parse(decompressedProperties));
-        } else {
-          const res = await axios.get(`${server}/api/properties`);
-          if (res.data.success) {
-            setProperties(res.data.properties);
-            const compressedProperties = LZString.compress(JSON.stringify(res.data.properties));
-            localStorage.setItem("properties", compressedProperties);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching properties:", error);
-      } 
-    };
-    fetchProperties();
-  }, []);
+  // useEffect(() => {
+    // const fetchProperties = async () => {
+      // try {
+        // const storedProperties = localStorage.getItem("properties");
+        // if (storedProperties) {
+          // const decompressedProperties = LZString.decompress(storedProperties);
+          // setProperties(JSON.parse(decompressedProperties));
+        // } else {
+  //         const res = await axios.get(`${server}/api/properties`);
+  //         if (res.data.success) {
+  //           setProperties(res.data.properties);
+  //           const compressedProperties = LZString.compress(JSON.stringify(res.data.properties));
+  //           localStorage.setItem("properties", compressedProperties);
+  //         }
+  //       // }
+  //     } catch (error) {
+  //       console.error("Error fetching properties:", error);
+  //     } 
+  //   };
+  //   fetchProperties();
+  // }, []);
   
   return (
     <div className='py-6 pt-24'>

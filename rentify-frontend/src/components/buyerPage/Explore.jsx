@@ -11,12 +11,12 @@ const Explore = () => {
   const [change, setChange] = useState(0);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const storedProperties = localStorage.getItem("properties");
-    if (storedProperties) {
-      const decompressedProperties = LZString.decompress(storedProperties);
-      setProperties(JSON.parse(decompressedProperties));
-      setLoading(false);
-    }else{
+    // const storedProperties = localStorage.getItem("properties");
+    // if (storedProperties) {
+      // const decompressedProperties = LZString.decompress(storedProperties);
+      // setProperties(JSON.parse(decompressedProperties));
+      // setLoading(false);
+    // }else{
 
     const fetchProperties = async () => {
       try {
@@ -31,7 +31,7 @@ const Explore = () => {
       }
     };
     fetchProperties();
-  }
+  // }
   }, []);
 
   if (loading) {
